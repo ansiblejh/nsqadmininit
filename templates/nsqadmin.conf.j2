@@ -1,0 +1,9 @@
+## enable verbose logging
+verbose = {{ nsqadmin_logging_verbose }}
+
+## <addr>:<port> to listen on for HTTP clients
+http_address = ":4171"
+
+nsqlookupd_http_addresses = [
+	{{ nsqd_lookupd_http_address }}
+]

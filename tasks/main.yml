@@ -1,0 +1,16 @@
+---
+
+- name: nsqadmininit | create the nsqadmin init script
+  copy: src=nsqadmin.init dest=/etc/init.d/nsqadmin mode=755
+  register: nsqadmin_task_init
+
+- name: nsqadmininit | create the nsqadmin config file
+  template: src=nsqadmin.conf.j2 dest=/usr/local/etc/nsqadmin.conf
+  register: nsqadmin_task_conf
+
+- name: nsqadmininit | start nsqadmin
+  service: name=nsqadmin state=started enabled=true
+
+- name: nsqadmininit | restart nsqadmin
+  service: name=nsqadmin state=restarted
+  when: nsqadmin_task_conf and nsqadmin_task_conf.changed
