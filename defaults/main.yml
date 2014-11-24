@@ -1,0 +1,5 @@
+---
+# defaults file for nsqlookupdinit
+
+nsqadmin_logging_verbose: "false"
+nsqd_lookupd_http_address: '"localhost:4161"'
